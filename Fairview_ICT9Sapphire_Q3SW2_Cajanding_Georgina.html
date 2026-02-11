@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Q3 Seatwork 2</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #850808, #783c3c);
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        .card-box {
+            background: rgba(255,255,255,0.08);
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            background-color: rgba(0,0,0,0.4);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1 class="text-center mt-4">Luxury Car Selector</h1>
+    <p class="text-center">Enter your budget and discover which luxury car matches your lifestyle.</p>
+
+    <div class="card-box text-center">
+
+        <h2>Enter Your Budget</h2>
+        <p>Budget in Philippine Peso (₱):</p>
+
+        <input type="number" id="budget" class="form-control w-50 mx-auto" placeholder="Enter amount here">
+        <br>
+        <button class="btn btn-danger" onclick="checkBudget()">Find My Car</button>
+
+        <div id="output" class="result"></div>
+
+        <h2 class="mt-4">Luxury Brands</h2>
+        <button class="btn btn-light m-1" onclick="selectBrand('Mercedes-Benz')">Mercedes-Benz</button>
+        <button class="btn btn-warning m-1" onclick="selectBrand('Ferrari')">Ferrari</button>
+        <button class="btn btn-secondary m-1" onclick="selectBrand('McLaren')">McLaren</button>
+        <button class="btn btn-info m-1" onclick="selectBrand('Lamborghini')">Lamborghini</button>
+        <button class="btn btn-success m-1" onclick="selectBrand('Porsche')">Porsche</button>
+
+    </div>
+
+    <footer>
+        <p>Learn more about luxury cars here:
+            <a href="https://www.topgear.com/car-news" target="_blank" class="text-info">
+                Visit Top Gear
+            </a>
+        </p>
+    </footer>
+</div>
+
+<script>
+    function checkBudget() {
+
+        let budget = Number(document.getElementById("budget").value);
+        let message = "";
+
+        if (budget >= 20000000) {
+            message = "You can afford a Ferrari or McLaren supercar.";
+        } 
+        else if (budget >= 15000000) {
+            message = "You can afford a Lamborghini or high-end Porsche.";
+        } 
+        else if (budget >= 8000000) {
+            message = "You can afford a Mercedes-Benz AMG model.";
+        } 
+        else if (budget >= 4000000) {
+            message = "You can afford an entry-level luxury Mercedes or Porsche.";
+        } 
+        else if (budget > 0) {
+            message = "Your budget is below typical luxury car pricing.";
+        } 
+        else {
+            message = "Please enter a valid budget.";
+        }
+
+        document.getElementById("output").innerHTML =
+            "<h4>Recommendation:</h4><p>" + message + "</p>";
+    }
+
+    function selectBrand(brand) {
+
+        let brandMessage = "You selected " + brand + " as your dream luxury brand.";
+
+        document.getElementById("output").innerHTML =
+            "<h4>Brand Selected:</h4><p>" + brandMessage + "</p>";
+    }
+</script>
+
+</body>
+</html>
