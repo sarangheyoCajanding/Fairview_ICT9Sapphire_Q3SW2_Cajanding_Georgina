@@ -27,6 +27,13 @@
             background-color: rgba(0,0,0,0.4);
         }
 
+        .location-box {
+            background: rgba(0,0,0,0.3);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
         footer {
             margin-top: 40px;
             text-align: center;
@@ -34,6 +41,18 @@
     </style>
 </head>
 <body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Luxury Auto Hub</a>
+
+        <form class="d-flex" role="search" onsubmit="searchCar(event)">
+            <input class="form-control me-2" type="search" placeholder="Search brand..." id="searchInput">
+            <button class="btn btn-outline-light" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
 
 <div class="container">
     <h1 class="text-center mt-4">Luxury Car Selector</h1>
@@ -57,6 +76,21 @@
         <button class="btn btn-info m-1" onclick="selectBrand('Lamborghini')">Lamborghini</button>
         <button class="btn btn-success m-1" onclick="selectBrand('Porsche')">Porsche</button>
 
+    </div>
+
+    <!-- STORE LOCATIONS SECTION -->
+    <div class="location-box text-center">
+        <h2>Store Locations</h2>
+        <p>Visit our official partner dealerships:</p>
+
+        <p><strong>Luxury Motors Manila</strong><br>
+        Bonifacio Global City, Taguig</p>
+
+        <p><strong>Elite Auto Showroom</strong><br>
+        Makati Avenue, Makati City</p>
+
+        <p><strong>Premier Cars PH</strong><br>
+        Cebu Business Park, Cebu City</p>
     </div>
 
     <footer>
@@ -103,6 +137,15 @@
 
         document.getElementById("output").innerHTML =
             "<h4>Brand Selected:</h4><p>" + brandMessage + "</p>";
+    }
+
+    function searchCar(event) {
+        event.preventDefault();
+
+        let searchValue = document.getElementById("searchInput").value;
+
+        document.getElementById("output").innerHTML =
+            "<h4>Search Result:</h4><p>You searched for: " + searchValue + "</p>";
     }
 </script>
 
